@@ -2318,7 +2318,7 @@ transform:scale(1);
 
 @media(max-width:768px){
 .service-modal-content{
-  max-height:70vh;  
+  margin-top: 90px;  
 }
 
 .modal-header{
