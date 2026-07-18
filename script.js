@@ -921,21 +921,18 @@ learnButtons.forEach(button=>{
         // GALLERY CODE
         // ===============================
 
-        let galleryHTML = "";
+       let galleryHTML = "";
 
-        service.gallery.forEach(img=>{
+service.gallery.forEach(img=>{
 
-            galleryHTML += `
-            <div class="gimage">
-            <img
-                src="${img}"
-                class="gallery-image"
-                loading="lazy"
-                alt="${service.title}">
-                </div>
-            `;
+    galleryHTML += `
+        <img
+            src="${img}"
+            loading="lazy"
+            alt="${service.title}">
+    `;
 
-        });
+});
     
 
 modalContent.innerHTML = `
@@ -959,7 +956,7 @@ alt="${service.title}">
 
     <h3>Recent Projects</h3>
 
-    <div class="gallery">
+    <div class="gimage">
 
         ${galleryHTML}
 
@@ -990,16 +987,15 @@ alt="${service.title}">
     </div>
 
     
-
+    
     <div class="modal-buttons">
 
-        <a href="#contact" class="modal-btn">
+      <a href="#contact"
+      class="modal-btn consultation-btn">
+         <i class="fa-solid fa-paper-plane"></i>
+        Request Consultation
 
-            <i class="fa-solid fa-paper-plane"></i>
-
-            Request Consultation
-
-        </a>
+       </a>
 
         <a href="tel:+250786151046"
 
@@ -1044,12 +1040,38 @@ alt="${service.title}">
 `;
 
 modal.classList.add("show");
+header.classList.add("header-hidden");
+
+});
+document.addEventListener("click",(e)=>{
+
+    if(e.target.classList.contains("consultation-btn")){
+
+        e.preventDefault();
+
+        modal.classList.remove("show");
+        header.classList.remove("header-hidden");
+
+        setTimeout(()=>{
+
+            document
+            .getElementById("contact")
+            .scrollIntoView({
+
+                behavior:"smooth"
+
+            });
+
+        },300);
+
+    }
 
 });
 
 closeModal.onclick = () => {
 
     modal.classList.remove("show");
+    header.classList.remove("header-hidden");
 
 };
 
@@ -1058,6 +1080,7 @@ window.onclick = (e) => {
     if (e.target === modal) {
 
         modal.classList.remove("show");
+        header.classList.remove("header-hidden");
 
     }
 
@@ -1068,10 +1091,60 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
 
         modal.classList.remove("show");
+        header.classList.remove("header-hidden");
 
     }
 
 });
+});
+/*=====================================
+IMAGE LIGHTBOX
+=====================================*/
+
+const lightbox = document.getElementById("lightbox");
+
+const lightboxImage =
+document.getElementById("lightboxImage");
+
+const lightboxClose =
+document.querySelector(".lightbox-close");
+
+document.addEventListener("click",(e)=>{
+
+    if(e.target.closest(".gimage img")){
+
+        lightbox.classList.add("show");
+
+        lightboxImage.src = e.target.src;
+
+    }
+
+});
+
+lightboxClose.onclick=()=>{
+
+    lightbox.classList.remove("show");
+
+};
+
+lightbox.onclick=(e)=>{
+
+    if(e.target===lightbox){
+
+        lightbox.classList.remove("show");
+
+    }
+
+};
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        lightbox.classList.remove("show");
+
+    }
+
 });
 
 /*==================================================
