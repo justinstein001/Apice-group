@@ -1,11 +1,8 @@
-/*==================================================
-APICE GROUP LTD
-Production JavaScript v2.0
-==================================================*/
+
 
 /*==================================================
 PRELOADER
-==================================================*/
+==================================================
 
 window.addEventListener("load", () => {
 
@@ -23,7 +20,7 @@ window.addEventListener("load", () => {
     }
 
 });
-
+*/
 /*==================================================
 STICKY NAVBAR
 ==================================================*/
@@ -326,22 +323,57 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 /*==================================================
 CONTACT FORM
 ==================================================*/
+const form = document.getElementById("contactForm");
 
-const contactForm = document.querySelector(".contact-form form");
+form.addEventListener("submit", function(e){
 
-if (contactForm) {
+    e.preventDefault();
 
-    contactForm.addEventListener("submit", function(e) {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const service = document.getElementById("service").value;
+    const message = document.getElementById("message").value;
 
-        e.preventDefault();
+    const recipient = "amahorojustin04@gmail.com";
 
-        alert("Thank you! Your message has been received. APICE GROUP LTD will contact you soon.");
+    const subject = encodeURIComponent(
+        "Website Inquiry - " + service
+    );
 
-        this.reset();
+    const body = encodeURIComponent(
+`Hello APICE GROUP LTD,
 
-    });
+You have received a new inquiry.
 
-}
+Name: ${name}
+
+Email: ${email}
+
+Phone: ${phone}
+
+Service: ${service}
+
+Message:
+
+${message}
+
+-------------------------
+Sent from APICE GROUP LTD Website`
+    );
+
+    // Open Gmail with the message already filled in
+    const gmailURL =
+    `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+
+    window.open(gmailURL, "_blank");
+    document.getElementById("name").value="";
+    document.getElementById("email").value="";
+    document.getElementById("phone").value="";
+    document.getElementById("service").value="";
+    document.getElementById("message").value="";
+
+});
 
 /*==================================================
 LAZY LOAD IMAGES

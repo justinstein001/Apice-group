@@ -1,7 +1,3 @@
-/*==================================================
- APICE GROUP LTD
- Production CSS v2.0
-==================================================*/
 
 /* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
@@ -80,7 +76,7 @@ ul{
 PRELOADER
 ==================================================*/
 
-#preloader{
+/*#preloader{
 
     position:fixed;
     inset:0;
@@ -95,7 +91,7 @@ PRELOADER
 
     transition:.8s;
 
-}
+}*/
 
 .loader-content{
 
@@ -674,7 +670,7 @@ ABOUT
 
 .about-image:hover img{
 
-    transform:scale(1.05);
+    transform:scale(1.03);
 
 }
 
@@ -931,31 +927,25 @@ PROJECTS
 
 }
 
-.project-container{
-
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:30px;
-
+.project-container {
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
 }
 
-.project-card{
-
-    position:relative;
-    overflow:hidden;
-    border-radius:20px;
-    cursor:pointer;
-    box-shadow:var(--shadow);
-
+.project-card {
+height:300px;
+position:relative;
+overflow:hidden;
+border-radius:20px;
 }
 
-.project-card img{
-
-    width:100%;
-    height:320px;
-    object-fit:cover;
-    transition:.6s;
-
+.project-card img {
+height:100%;
+width:100%;
+object-fit:cover;
+transition:.5s;
 }
 
 .project-card:hover img{
@@ -1266,7 +1256,7 @@ TEAM
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 
     gap:40px;
 
@@ -1304,7 +1294,7 @@ TEAM
 
     width:100%;
 
-    height:420px;
+    height:520px;
 
     object-fit:cover;
 
@@ -1314,7 +1304,7 @@ TEAM
 
 .team-card:hover img{
 
-    transform:scale(1.08);
+    transform:scale(1.05);
 
 }
 
